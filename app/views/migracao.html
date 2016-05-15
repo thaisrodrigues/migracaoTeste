@@ -1,0 +1,32 @@
+<div>
+  <form novalidate ng-submit="consultaEligibilidade(celular)">
+    <p>
+      Qual o seu número pré da Oi?
+    </p>
+    <input ng-model="celular" type="text"/>
+    <br>
+    <br>
+    <input ng-hide="success_sms || loading" type="submit" value="Envie o código de acesso pra mim (SMS)"/>
+
+  </form>
+
+    <!--loading div-->
+    <div ng-show="loading">
+      <img  src="../images/loading.gif" height="20px"/>
+      Enviando código de acesso
+    </div>
+    <!-- success div-->
+    <div ng-show="success_sms">
+      <img  src="../images/success.png" height="20px"/>
+       Código de acesso enviado
+       <br>
+       <br>
+       <p>
+         Confirme o código que você recebeu
+       </p>
+       <input ng-model="codigo" type="text"/>
+       <br>
+       <br>
+       <input type="submit" value="Teste autenticação" ng-click="autenticacao(codigo)"/>
+    </div>
+</div>

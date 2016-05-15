@@ -1,0 +1,47 @@
+
+<div class="col-md-6">
+  <div class="panel panel-profile">
+    <div class="panel-heading bg-primary clearfix">
+      <a href="#/" class="pull-left profile">
+        <img alt="" src="images/globocom.png" class="img-circle img80_80">
+      </a>
+      <a href="#/" ng-click="hideDetalhes()">
+          <i class="fa fa-times fa-2x"></i>
+      </a>
+
+      <h3 class="ng-binding">Empresa: {{repoSelecionado.owner.login}}</h3>
+
+      <p>Nome do projeto: {{repoSelecionado.name}}</p>
+    </div>
+    <div class="list-justified-container">
+      <ul class="list-justified text-center">
+        <li>
+          <p class="size-h3">{{repoSelecionado.stargazers_count}}</p>
+          <p class="text-muted">Stars</p>
+        </li>
+        <li>
+          <p class="size-h3">{{repoSelecionado.default_branch}}</p>
+          <p class="text-muted">Branch</p>
+        </li>
+        <li>
+          <p class="size-h3">{{repoSelecionado.forks}}</p>
+          <p class="text-muted">Forks</p>
+        </li>
+      </ul>
+      <ul class="list-group" ng-repeat="repo in repositorios.commits" ng-init="i=0" class="list-group-item ">
+        <li class="list-group-item">
+          <span class="badge  badge-success" >Autor: {{repo.commit.author.name}}</span>
+          <i class="fa fa-github fa-2x"></i>
+          <a id="titulo" href>{{repo.commit.message}}</a>
+        </li>
+      </ul>
+    </div>
+    <nav>
+      <ul class="pager">
+        <!--{{!(pagRepositorios > 1)}}-->
+        <li><a class="button-pagination"  ng-click="pagAnteriorCommits(pagCommits)" ng-show="pagCommits > 1" href="">Anterior</a></li>
+        <li><a class="button-pagination" href="#{{repoSelecionado.name}}" ng-click="pagProximoCommit(pagCommits)" ng-show="links.indexOf('next') > -1">Próximo</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
